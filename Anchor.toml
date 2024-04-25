@@ -1,0 +1,38 @@
+[toolchain]
+
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+amm_proxy = "3R9nqSqYpESEmo3chss8gEBpAAn1u6fY8QZyDFJRSyGS"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "Localnet"
+wallet = "/home/xiaolong/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+
+[test.validator]
+gossip_host = "127.0.0.1"
+bind_address = "127.0.0.1"
+
+[[test.genesis]]
+address = "EoTcMgcDRTJVZDMZWBoU6rhYHZfkNTVEAfz3uUJRcYGj"
+program = "pre/serum-market-dev.so"
+
+[[test.genesis]]
+address = "HWy1jotHpo6UqeQxx49dpYYdQB8wj9Qk9MdxwjLvDHB8"
+program = "pre/raydium-amm-dev.so"
+
+[[test.validator.account]]
+address = "8QN9yfKqWDoKjvZmqFsgCzAqwZBQuzVVnC388dN5RCPo"
+filename = "pre/amm-authority-dev.json"
+
+[[test.validator.account]]
+address = "3XMrhbv989VxAMi3DErLV9eJht1pHppW5LbKxe9fkEFR"
+filename = "pre/create-pool-fee-dev.json"
